@@ -1,0 +1,33 @@
+{
+  "name": "@kidsstar/iphonex_tester",
+  "version": "1.0.0",
+  "description": "Display test frame for iPhone X",
+  "homepage": "https://github.com/kidsstar/iphonex_tester",
+  "bugs": {
+    "url": "https://github.com/kidsstar/iphonex_tester/issues"
+  },
+  "scripts": {
+    "umm:init": "./scripts/umm/init",
+    "umm:clean": "./scripts/umm/clean",
+    "postinstall": "node scripts/postinstall.js",
+    "postuninstall": "node scripts/postuninstall.js",
+    "build:test": "tar -tf $(npm pack -s) && $(npm bin)/rimraf $_"
+  },
+  "author": "KidsStar Inc.",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kidsstar/iphonex_tester"
+  },
+  "files": [
+    "Assets",
+    "scripts"
+  ],
+  "dependencies": {
+    "glob": "^7.1.2",
+    "mkdirp": "^0.5.1",
+    "ncp": "^2.0.0",
+    "rimraf": "^2.6.1"
+  },
+  "devDependencies": {}
+}
