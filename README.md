@@ -5,12 +5,12 @@
 # Requirement
 
 * Unity 2017.1
-* npm
+* yarn
 
 # Install
 
 ```shell
-$ npm install github:kidsstar/iphonex_tester
+yarn add "kidsstar/iphonex_tester#^1.0.0"
 ```
 
 # Usage
