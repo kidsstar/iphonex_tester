@@ -1,0 +1,12 @@
+{
+    "name": "kidsstar@iphonex_tester-Editor",
+    "references": [
+        "kidsstar@iphonex_tester"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
