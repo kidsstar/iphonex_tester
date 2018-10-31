@@ -1,21 +1,84 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-namespace iPhoneXTester {
+namespace iPhoneXTester
+{
+    [ExecuteInEditMode]
+    public class Controller : MonoBehaviour
+    {
+        private const string SceneName = "iPhoneX_Tester";
 
-    public class Controller : MonoBehaviour {
+        [SerializeField] private Image landscape;
+        [SerializeField] private Image portrait;
+        private Image Landscape => landscape;
+        private Image Portrait => portrait;
 
-        private const string SCENE_NAME = "iPhoneX_Tester";
-
-        private void Awake() {
-            this.gameObject.name = SCENE_NAME;
-            DontDestroyOnLoad(this.gameObject);
+        private void Awake()
+        {
+            gameObject.name = SceneName;
+            if (Application.isPlaying)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
         }
 
-        private void Start() {
-            SceneManager.UnloadSceneAsync(SCENE_NAME);
+        private void Start()
+        {
+            if (!Application.isPlaying)
+            {
+                return;
+            }
+            ActivateImages();
         }
 
+#if UNITY_EDITOR
+
+        private Vector2Int PreviousScreenResolution { get; set; }
+
+        private void LateUpdate()
+        {
+            if (PreviousScreenResolution.x == Screen.width && PreviousScreenResolution.y == Screen.height)
+            {
+                return;
+            }
+
+            PreviousScreenResolution = new Vector2Int(Screen.width, Screen.height);
+            ActivateImages();
+        }
+
+#endif
+
+        private void ActivateImages()
+        {
+            if (Application.isEditor)
+            {
+                if (Portrait.gameObject.activeSelf != IsPortrait())
+                {
+                    EditorUtility.SetObjectEnabled(Portrait.gameObject, IsPortrait());
+                }
+                if (Landscape.gameObject.activeSelf == IsPortrait())
+                {
+                    EditorUtility.SetObjectEnabled(Landscape.gameObject, !IsPortrait());
+                }
+            }
+            else
+            {
+                if (Portrait.gameObject.activeSelf != IsPortrait())
+                {
+                    Portrait.gameObject.SetActive(IsPortrait());
+                }
+                if (Landscape.gameObject.activeSelf == IsPortrait())
+                {
+                    Landscape.gameObject.SetActive(!IsPortrait());
+                }
+            }
+        }
+
+        private static bool IsPortrait()
+        {
+            return Screen.width < Screen.height;
+        }
     }
-
 }
