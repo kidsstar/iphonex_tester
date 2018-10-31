@@ -1,26 +1,25 @@
-# What
+# iPhone X Tester
 
 * iPhone X での見え方をテストするためのフレームを描画します
 
-# Requirement
+## Requirement
 
 * Unity 2017.1
 * yarn
 
-# Install
+## Install
 
 ```shell
 yarn add "kidsstar/iphonex_tester#^1.0.0"
 ```
 
-# Usage
+## Usage
 
 * メニューの `Assets` &gt; `Install iPhone X Tester` からテスターシーンを追加してください。
-* 再生中の追加は出来ません。
 
-# License
+## License
 
-Copyright (c) 2017 KidsStar Inc.
+Copyright (c) 2017-2018 KidsStar Inc.
 
 Released under the MIT license, see [LICENSE.txt](LICENSE.txt)
 
