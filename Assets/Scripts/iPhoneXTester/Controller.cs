@@ -1,6 +1,5 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace iPhoneXTester
@@ -54,6 +53,7 @@ namespace iPhoneXTester
         {
             if (Application.isEditor)
             {
+#if UNITY_EDITOR
                 if (Portrait.gameObject.activeSelf != IsPortrait())
                 {
                     EditorUtility.SetObjectEnabled(Portrait.gameObject, IsPortrait());
@@ -62,6 +62,7 @@ namespace iPhoneXTester
                 {
                     EditorUtility.SetObjectEnabled(Landscape.gameObject, !IsPortrait());
                 }
+#endif
             }
             else
             {
